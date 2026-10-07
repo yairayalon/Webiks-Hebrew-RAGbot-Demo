@@ -1,5 +1,7 @@
 # Webiks-Hebrew-RAGbot-Demo
 
+This fork adds title-aware retrieval; [SUBMISSION.md](SUBMISSION.md) describes the change, its evaluation and how to run it.
+
 ## Overview
 
 This project is a FastAPI-based application that integrates with Elasticsearch and a rag-bot to perform various document-related operations.
