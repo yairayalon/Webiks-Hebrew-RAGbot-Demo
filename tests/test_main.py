@@ -42,7 +42,7 @@ class MainSetup:
             mock_es_model_instance = mock_es_client()
             with patch('get_es_client.factory', return_value=mock_es_client()), \
                     patch('saved_config.Configs.get_config', return_value=mock_saved_configurations), \
-                    patch('webiks_hebrew_ragbot.engine.engine_factory', return_value=MagicMock()):
+                    patch('retrieval.factory.engine_factory', return_value=MagicMock()):
                 main_module = importlib.import_module("main")
                 app = main_module.app
                 engine = MagicMock()

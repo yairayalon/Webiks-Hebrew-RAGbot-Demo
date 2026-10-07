@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.staticfiles import StaticFiles
 from utils import convert_kolzchut_paragraphs_corpus_to_json, create_or_update_doc
 from pydantic import BaseModel
-from webiks_hebrew_ragbot.engine import engine_factory
+from retrieval.factory import engine_factory
 import get_es_client
 import interactions_model
 import saved_config
