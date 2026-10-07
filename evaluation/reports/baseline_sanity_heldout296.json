@@ -1,0 +1,93 @@
+{
+  "name": "baseline_sanity_heldout296",
+  "created_utc": "2026-10-05T13:46:44+00:00",
+  "split": "heldout",
+  "n": 296,
+  "limit": null,
+  "setup": {
+    "engine": "webiks-hebrew-ragbot Engine.search_documents",
+    "model": "Webiks_Hebrew_RAGbot_KolZchut_QA_Embedder_v1.0",
+    "index_prefix": "kolzchut_full",
+    "candidate_paragraphs": 50,
+    "top_k": 10,
+    "relevance": "document level: doc_ids paired with the question in the QA dataset"
+  },
+  "eval_set": {
+    "qa_csv": {
+      "file": "Webiks_Hebrew_RAGbot_KolZchut_QA_Training_DataSet_v0.1.csv",
+      "sha256": "4674f0b611f32693f44914a428f7299ce21bc35c7cc565353188a7ee5e88f160",
+      "rows": 3890,
+      "unique_questions": 2951
+    },
+    "heldout": {
+      "rule": "train_test_split(unique_questions, test_size, random_state)[1]",
+      "test_size": 0.1,
+      "random_state": 42,
+      "train_questions": 2655
+    },
+    "dev_test": {
+      "rule": "dev, test = train_test_split(heldout, test_size, random_state)",
+      "test_size": 200,
+      "random_state": 42
+    },
+    "splits": {
+      "dev": {
+        "n": 96,
+        "relevant_pairs": 133,
+        "questions_sha256": "dacc57224e36d65e679b5f17c965d51df3f9bdd3292e42b65f2166f9aa0f9bc7"
+      },
+      "test": {
+        "n": 200,
+        "relevant_pairs": 257,
+        "questions_sha256": "fe2ba607c76eebab6975593fd08ab6adb01ad135b4baaaee6b5641e59fb84ad0"
+      },
+      "heldout": {
+        "n": 296,
+        "relevant_pairs": 390,
+        "questions_sha256": "2cdbff20eac5da4333780f5196706266d1e0e521c5f21627509c3f5e29303931"
+      }
+    },
+    "scikit_learn": "1.4.2",
+    "ranking_check": {
+      "file": "ranking_results.csv",
+      "rows": 296,
+      "matched": 296,
+      "missing": 0,
+      "extra": 0,
+      "ok": true
+    }
+  },
+  "environment": {
+    "versions": {
+      "python": "3.10.11",
+      "webiks-hebrew-ragbot": "1.0.1",
+      "sentence-transformers": "3.0.1",
+      "transformers": "4.42.3",
+      "torch": "2.3.1",
+      "elasticsearch": "8.14.0",
+      "numpy": "1.26.4"
+    },
+    "elasticsearch_server": "8.12.2",
+    "torch_threads": 4,
+    "demo_commit": "e677605",
+    "demo_dirty": false
+  },
+  "systems": {
+    "baseline": {
+      "metrics": {
+        "hit@1": 0.3716216216216216,
+        "hit@3": 0.581081081081081,
+        "hit@5": 0.652027027027027,
+        "hit@10": 0.7601351351351351,
+        "mrr@10": 0.4975466537966538,
+        "ndcg@10": 0.5206065539072161
+      },
+      "latency_s": {
+        "median": 0.7586158500052989,
+        "p95": 1.259425599972019
+      },
+      "short_rankings": 1
+    }
+  },
+  "questions": null
+}
